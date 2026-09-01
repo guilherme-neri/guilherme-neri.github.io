@@ -1,0 +1,160 @@
+/* ---------------------------------------------------------------
+   Guilherme Neri — personal site
+   Layout, type and colour knobs are custom properties in :root.
+   --------------------------------------------------------------- */
+
+:root {
+  /* photo */
+  --photo-w: 15.75rem;
+  --photo-ar: 0.96;
+  --photo-zoom: 1.32;
+  --photo-x: -17.0%;
+  --photo-y: -5.0%;
+  --photo-radius: 3px;
+  /* type */
+  --body-size: 1.020rem;
+  --body-lh: 1.71;
+  --h1-size: 2.13rem;
+  --affil-size: 0.86rem;
+  --title-size: 1.16rem;
+  --status-size: 0.78em;
+  --abs-size: 0.85rem;
+  --abs-lh: 1.56;
+  --label-size: 0.80rem;
+  --label-track: 0.140em;
+  /* layout */
+  --measure: 55.0rem;
+  --gap: 2.50rem;
+  --pad-top: 4.0rem;
+  --section-gap: 1.5rem;
+  /* type */
+  --h1-weight: 600;
+  --font-body: "Charter","Bitstream Charter","Iowan Old Style",Georgia,serif;
+  --font-ui:   -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  /* colour */
+  --link: #15537d;
+  --ink: #000000;
+  --ink-soft: #4a4a4a;
+  --ink-mute: #7d7d7d;
+  --rule: #ebebeb;
+  --bg: #fdfdfc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: var(--measure);
+  padding: var(--pad-top) 1.75rem 6rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+a       { color: var(--link); text-decoration: none;
+          border-bottom: 1px solid color-mix(in srgb, var(--link) 30%, transparent); }
+a:hover { border-bottom-color: var(--link); }
+
+/* ---------- intro ---------- */
+
+.intro { display: flex; gap: var(--gap); align-items: flex-start; }
+
+.intro__photo {
+  width: var(--photo-w);
+  flex: 0 0 var(--photo-w);
+  aspect-ratio: var(--photo-ar);
+  border-radius: var(--photo-radius);
+  overflow: hidden;
+  position: relative;
+  background: #eceae6;
+}
+.intro__photo img {
+  position: absolute; left: 0; top: 0; display: block;
+  width: calc(var(--photo-zoom) * 100%);
+  height: auto;
+  transform: translate(var(--photo-x), var(--photo-y));
+}
+
+.intro__text { flex: 1; min-width: 0; }
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  margin: -.35rem 0 .3rem;
+}
+
+.affiliation {
+  font-family: var(--font-ui);
+  font-size: var(--affil-size);
+  color: var(--ink-mute);
+  line-height: 1.5;
+  margin: 0 0 1.4rem;
+}
+
+.intro__text p { margin: 0 0 1rem; }
+.contact { font-size: .95em; }
+.contact a { overflow-wrap: anywhere; }
+
+/* ---------- sections ---------- */
+
+.section { border-top: 1px solid var(--rule);
+            margin-top: var(--section-gap);
+            padding-top: calc(var(--section-gap) * .75); }
+
+h2 {
+  font-family: var(--font-ui);
+  font-size: var(--label-size);
+  font-weight: 600;
+  letter-spacing: var(--label-track);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- papers ---------- */
+
+.paper { margin-bottom: 2.5rem; }
+.paper:last-child { margin-bottom: 0; }
+
+.paper__title { font-size: var(--title-size); font-weight: 600;
+                margin: 0 0 .25rem; line-height: 1.35; }
+.paper__title a { color: var(--ink); border-bottom-color: transparent; }
+.paper__title a:hover { color: var(--link); border-bottom-color: var(--link); }
+
+.paper__meta { font-size: .92rem; color: var(--ink-mute); margin: 0 0 .7rem; }
+.paper__sep  { margin: 0 .5em; color: var(--ink-mute); opacity: .5; }
+
+/* "Submitted" / "R&R at ..." sitting beside a paper title */
+.paper__status {
+  font-family: var(--font-ui);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--status-size);
+  color: var(--ink-mute);
+  margin-left: .55em;
+  white-space: nowrap;
+}
+
+.paper__abstract {
+  font-size: var(--abs-size);
+  line-height: var(--abs-lh);
+  color: var(--ink-soft);
+  margin: 0;
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--rule);
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 640px) {
+  body { padding: 2.5rem 1.25rem 4rem; }
+  .intro { flex-direction: column; gap: 1.5rem; }
+  .intro__photo { width: 10rem; flex-basis: 10rem; }
+  h1 { font-size: calc(var(--h1-size) * .83); }
+}

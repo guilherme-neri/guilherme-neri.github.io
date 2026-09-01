@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+._*
+
+# OneDrive sync artefacts
+*conflicted copy*
+
+# local tooling and working notes — never published
+_source/
+Open Studio.command
+HANDOFF.md
